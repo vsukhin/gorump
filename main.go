@@ -1,7 +1,6 @@
 package main
 
 import (
-	"C"
 	"fmt"
 	"net/http"
 	"time"
@@ -24,10 +23,7 @@ func panicHandler(w http.ResponseWriter, r *http.Request) {
 	fmt.Fprintf(w, "this request is panic")
 }
 
-func main() { application() }
-
-//export application
-func application() {
+func main() {
 	http.HandleFunc("/fast", fastHandler)
 	http.HandleFunc("/slow", slowHandler)
 	http.HandleFunc("/panic", panicHandler)
